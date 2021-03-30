@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC " -//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.mymy.mymy.Dao.Dao">
+	
+	
+	<!-- 글작성 -->
+	<insert id = "Dowrite">
+	insert into my_mvc_board(bId,bName,bTitle,bContent,bHit,bGroup,bStep,bIndent) 
+	values(my_mvc.nextval,#{param1},#{param2},#{param3},0,my_mvc.currval,0,0)
+	
+	</insert>
+	
+	<!-- 메인페이지 게시물 보여주기 -->
+	<select id = "BoardList" resultType="com.mymy.mymy.Dto.Dto">
+	select * from my_mvc_board
+	
+	
+	</select>
+	<!-- 클릭한 해당 게시물 보여주기 -->
+	<select id="ContentView" resultType="com.mymy.mymy.Dto.Dto">
+	select * from my_mvc_board where bId =#{param1} 
+	
+	
+	</select>
+	<delete id="delete"> 
+	delete from my_mvc_board where bId = #{param1}
+	
+	
+	</delete>
+	<update id="modify">
+update my_mvc_board set bName=#{param2},bTitle=#{param3},bContent=#{param4} where bId=#{param1}
+	
+	</update>
+	
+	
+	</mapper>
